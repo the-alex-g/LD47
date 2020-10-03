@@ -12,6 +12,7 @@ func _ready():
 
 func _on_Button_pressed():
 	pressed.play()
+	main.hide()
 	get_parent().get_node("AnimationPlayer").play("Flyin")
 
 func _on_Button2_pressed():
