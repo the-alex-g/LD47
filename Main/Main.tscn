@@ -81,6 +81,7 @@ transform = Transform( 1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 3, 0 )
 [connection signal="GO" from="." to="Player" method="_on_Main_GO"]
 [connection signal="lit" from="." to="HUD" method="_on_Main_lit"]
 [connection signal="player_dead" from="." to="HUD" method="_on_Main_player_dead"]
+[connection signal="won" from="." to="HUD" method="_on_Main_won"]
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="lighterup" from="Player" to="." method="_on_Player_lighterup"]
 [connection signal="lit" from="Rods/Rod" to="." method="_on_Rod_lit"]
