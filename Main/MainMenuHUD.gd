@@ -12,8 +12,7 @@ func _ready():
 
 func _on_Button_pressed():
 	pressed.play()
-	yield(get_tree().create_timer(0.5), "timeout")
-	var _error = get_tree().change_scene("res://Main/Main.tscn")
+	get_parent().get_node("AnimationPlayer").play("Flyin")
 
 func _on_Button2_pressed():
 	pressed.play()
@@ -29,3 +28,10 @@ func toggle_fluff(boolean:bool):
 func _on_Back_pressed():
 	pressed.play()
 	toggle_fluff(false)
+
+func _on_AnimationPlayer_animation_finished(_anim_name):
+	var rods = get_parent().get_node("Rods").get_children()
+	for rod in rods:
+		rod.get_node("Spatial").get_node("MeshInstance").get_node("OmniLight").visible = false
+		yield(get_tree().create_timer(0.3), "timeout")
+	var _error = get_tree().change_scene("res://Main/Main.tscn")
