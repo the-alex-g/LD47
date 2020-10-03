@@ -72,7 +72,7 @@ margin_bottom = 324.0
 custom_fonts/font = ExtResource( 2 )
 text = "The planet Torus has been plunged into darkness. 
 The only way to reignite the planetery flame is to activate the three mystical pillars,
-but you must beware the insectile creatures who do not whish to see the light return!"
+but you must beware the insectile creatures who do not wish to see the light return!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
