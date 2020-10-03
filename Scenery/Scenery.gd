@@ -1,3 +1,4 @@
+class_name Scenery
 extends Spatial
 
 
@@ -15,5 +16,5 @@ func _set_new_location():
 	secondary_rotation_point.rotation_degrees.x = rand_range(1,360)
 
 
-func _on_VisibilityNotifier_camera_exited(camera):
+func _on_VisibilityNotifier_camera_exited(_camera):
 	_set_new_location()

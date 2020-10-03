@@ -2,18 +2,36 @@ class_name Player
 extends Spatial
 
 onready var secondary_rotation_point:Spatial = $Spatial
-#onready var camera:Camera = $Spatial/Camera
+onready var tween:Tween = $Tween
+var GO := false
+var primary_rotation:float = 0
+var secondary_rotation:float = 0
+signal lighterup
 
 func _process(_delta):
-	var primary_rotation:float
-	var secondary_rotation:float
-	if Input.is_action_pressed("Left"):
-		secondary_rotation -=1
-	if Input.is_action_pressed("Right"):
-		secondary_rotation += 1
-	if Input.is_action_pressed("Backward"):
-		primary_rotation -= 1
-	if Input.is_action_pressed("Forward"):
-		primary_rotation += 1
+	if not GO:
+		primary_rotation = 0
+		secondary_rotation = 0
+		if Input.is_action_pressed("Forward"):
+			secondary_rotation -=1
+		if Input.is_action_pressed("Backward"):
+			secondary_rotation += 1
+		if Input.is_action_pressed("Left"):
+			primary_rotation -= 1
+		if Input.is_action_pressed("Right"):
+			primary_rotation += 1
 	secondary_rotation_point.rotation_degrees.x += secondary_rotation
 	rotation_degrees.y += primary_rotation
+
+func _on_Main_GO():
+	GO = true
+	primary_rotation = 0
+	secondary_rotation = 0
+	$Spatial/MeshInstance/Camera.current = false
+	var _error = tween.interpolate_property(secondary_rotation_point, "rotation_degrees", Vector3(secondary_rotation_point.rotation_degrees.x,0,0), Vector3(-90,0,0), 1)
+	var _error2 = tween.start()
+	yield(get_tree().create_timer(1), "timeout")
+	var _error3 = tween.interpolate_property(secondary_rotation_point, "translation", Vector3(0,0,secondary_rotation_point.translation.z), Vector3(0,0,0.5), 3)
+	var _error4 = tween.start()
+	yield(get_tree().create_timer(3), "timeout")
+	emit_signal("lighterup")
