@@ -20,6 +20,7 @@ ambient_light_color = Color( 0.145098, 0.00392157, 0.270588, 1 )
 
 [node name="Main" type="CSGTorus"]
 sides = 12
+ring_sides = 12
 material = SubResource( 1 )
 script = ExtResource( 5 )
 

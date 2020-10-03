@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Main/MainMenuHUD.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/PoiretOne.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Music/Light.wav" type="AudioStream" id=3]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -20,4 +21,8 @@ text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 5.0
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
