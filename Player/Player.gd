@@ -11,8 +11,7 @@ signal dead
 
 func _process(_delta):
 	if not GO:
-		primary_rotation = 0
-		secondary_rotation = 0
+		stop()
 		if Input.is_action_pressed("Forward"):
 			secondary_rotation -=1
 		if Input.is_action_pressed("Backward"):
@@ -26,8 +25,7 @@ func _process(_delta):
 
 func _on_Main_GO():
 	GO = true
-	primary_rotation = 0
-	secondary_rotation = 0
+	stop()
 	secondary_rotation_point.rotation_degrees.x = int(secondary_rotation_point.rotation_degrees.x)%360
 	$Spatial/MeshInstance/Camera.current = false
 	var _error = tween.interpolate_property(secondary_rotation_point, "rotation_degrees", Vector3(secondary_rotation_point.rotation_degrees.x,0,0), Vector3(-90,0,0), 1)
@@ -38,8 +36,12 @@ func _on_Main_GO():
 	yield(get_tree().create_timer(3), "timeout")
 	emit_signal("lighterup")
 
+func stop():
+	primary_rotation = 0
+	secondary_rotation = 0
 
 func _on_Player_area_entered(area):
 	if area.name == "Enemy" and not GO:
 		GO = true
+		stop()
 		emit_signal("dead")
