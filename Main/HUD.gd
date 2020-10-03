@@ -18,4 +18,5 @@ func _on_Main_won():
 	_message.text = "You have illuminated the inky void"
 	_message.visible = true
 	yield(get_tree().create_timer(2), "timeout")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	var _error = get_tree().change_scene("res://Main/MainMenu.tscn")

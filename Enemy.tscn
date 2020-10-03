@@ -72,7 +72,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "Walk"
-length = 0.8
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Spatial/Enemy/Leg:rotation_degrees")
@@ -84,7 +84,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( -16.1454, 27.5101, -3.93558 ), Vector3( -7.89967, 26.6115, 0.365608 ) ]
+"values": [ Vector3( -23.0368, 28.825, -7.84857 ), Vector3( -7.89967, 26.6115, 0.365608 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Spatial/Enemy/Leg2:rotation_degrees")
@@ -96,7 +96,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 16.277, -39.4795, 6.24421 ), Vector3( 9.73818, -41.2581, -1.63317 ) ]
+"values": [ Vector3( 26.0406, -42.7871, -2.86924 ), Vector3( 9.73818, -41.2581, -1.63317 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Spatial/Enemy/Leg3:rotation_degrees")
@@ -105,10 +105,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.6, 0.8 ),
+"times": PoolRealArray( 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, -3.14102 ), Vector3( 0, 0, -14.749 ) ]
+"values": [ Vector3( 0, 0, -28.04 ), Vector3( 0, 0, -14.749 ) ]
 }
 
 [node name="Enemy" type="Spatial"]
@@ -124,17 +124,17 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.5, 0 )
 shape = SubResource( 1 )
 
 [node name="Leg" type="MeshInstance" parent="Spatial/Enemy"]
-transform = Transform( 0.893514, -0.0672112, 0.443979, -0.0617216, 0.960967, 0.26969, -0.444775, -0.268375, 0.854488, 0.190714, -1.19209e-07, 0.396887 )
+transform = Transform( 0.891454, -0.0660196, 0.448276, -0.0628912, 0.961724, 0.266704, -0.448726, -0.265947, 0.853181, 0.190714, -1.19209e-07, 0.396887 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="Leg2" type="MeshInstance" parent="Spatial/Enemy"]
-transform = Transform( 0.754498, -0.194455, -0.626833, 0.0532366, 0.970085, -0.236859, 0.654139, 0.145339, 0.742279, 0.222341, 0.00416255, -0.331737 )
+transform = Transform( 0.75462, -0.0900735, -0.64995, -0.0280897, 0.985191, -0.169146, 0.65556, 0.145898, 0.740915, 0.222341, 0.00416279, -0.331737 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="Leg3" type="MeshInstance" parent="Spatial/Enemy"]
-transform = Transform( 0.975767, 0.218809, 0, -0.218809, 0.975767, 0, 0, 0, 1, -0.451147, 0, 0 )
+transform = Transform( 0.882619, 0.470088, 0, -0.470088, 0.882619, 0, 0, 0, 1, -0.451147, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 

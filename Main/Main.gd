@@ -1,6 +1,6 @@
 extends CSGTorus
 
-var _lit_rods := 2
+var _lit_rods := 0
 signal GO
 signal lit
 signal player_dead
@@ -29,4 +29,5 @@ func _on_Player_lighterup():
 func _on_Player_dead():
 	emit_signal("player_dead")
 	yield(get_tree().create_timer(2), "timeout")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	var _error = get_tree().change_scene("res://Main/MainMenu.tscn")
