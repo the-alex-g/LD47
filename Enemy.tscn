@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.435512
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 0.1
+bottom_radius = 0.05
+height = 1.0
+
+[sub_resource type="SphereMesh" id=3]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="CylinderMesh" id=4]
+top_radius = 0.025
+bottom_radius = 0.025
+height = 0.2
+
+[node name="Enemy" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5 )
+
+[node name="Enemy" type="Area" parent="Spatial"]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.5, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Enemy"]
+shape = SubResource( 1 )
+
+[node name="Leg" type="MeshInstance" parent="Spatial/Enemy"]
+transform = Transform( 0.893654, -0.0672677, 0.443687, 0, 0.988702, 0.149898, -0.448758, -0.133957, 0.883557, 0.190714, 0, 0.396887 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Leg2" type="MeshInstance" parent="Spatial/Enemy"]
+transform = Transform( 0.753919, -0.0706101, -0.653162, -0.0429792, 0.986777, -0.156285, 0.65556, 0.145898, 0.740915, 0.222341, 0.00416256, -0.331737 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Leg3" type="MeshInstance" parent="Spatial/Enemy"]
+transform = Transform( 0.974503, 0.224373, 0, -0.224373, 0.974503, 0, 0, 0, 1, -0.451147, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Body" type="MeshInstance" parent="Spatial/Enemy"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Leg21" type="MeshInstance" parent="Spatial/Enemy"]
+transform = Transform( 0.860048, -0.510213, 0, 0.510213, 0.860048, 0, 0, 0, 1, -0.304966, 0.225055, -0.0141535 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Leg22" type="MeshInstance" parent="Spatial/Enemy"]
+transform = Transform( 0.753919, 0.373687, -0.540337, -0.0429792, 0.848764, 0.527022, 0.65556, -0.374108, 0.65596, 0.117825, 0.219242, -0.197439 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Leg23" type="MeshInstance" parent="Spatial/Enemy"]
+transform = Transform( 0.893654, 0.251714, 0.371515, 0, 0.827874, -0.560914, -0.448758, 0.501262, 0.739833, 0.117342, 0.223404, 0.250774 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="area_entered" from="Spatial/Enemy" to="." method="_on_Enemy_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
