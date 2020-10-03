@@ -6,6 +6,7 @@ onready var story:Button = $VBoxContainer/Story
 onready var play:Button = $VBoxContainer/Play
 onready var main:VBoxContainer = $VBoxContainer
 onready var fluff:Node2D = $Node2D
+onready var title:HBoxContainer = $HBoxContainer
 
 func _ready():
 	toggle_fluff(false)
@@ -13,6 +14,8 @@ func _ready():
 func _on_Button_pressed():
 	pressed.play()
 	main.hide()
+	title.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	get_parent().get_node("AnimationPlayer").play("Flyin")
 
 func _on_Button2_pressed():

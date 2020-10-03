@@ -17,7 +17,7 @@ background_color = Color( 0.0431373, 0, 0.105882, 1 )
 ambient_light_color = Color( 0.145098, 0.00392157, 0.270588, 1 )
 
 [sub_resource type="Animation" id=3]
-resource_name = "Flyin"
+resource_name = "Flyout"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Camera:translation")
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 3.53031, 2.272, 0 ), Vector3( 0.0230124, -0.0204588, 0.992751 ) ]
+"values": [ Vector3( 3.53031, 2.272, 0 ), Vector3( 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Camera:rotation_degrees")
