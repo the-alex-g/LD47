@@ -7,22 +7,75 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="Button" type="Button" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 5.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -19.0
-margin_top = -10.0
-margin_right = 19.0
-margin_bottom = 10.0
+margin_left = -23.5
+margin_top = -28.0
+margin_right = 23.5
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+margin_right = 47.0
+margin_bottom = 26.0
 custom_fonts/font = ExtResource( 2 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = 5.0
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="Story" type="Button" parent="VBoxContainer"]
+margin_top = 30.0
+margin_right = 47.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 2 )
+text = "Story"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Back" type="Button" parent="Node2D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 491.0
+margin_top = 360.0
+margin_right = 533.0
+margin_bottom = 360.0
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Node2D"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 238.5
+margin_top = 276.0
+margin_right = 785.5
+margin_bottom = 324.0
+custom_fonts/font = ExtResource( 2 )
+text = "The planet Torus has been plunged into darkness. 
+The only way to reignite the planetery flame is to activate the three mystical pillars,
+but you must beware the insectile creatures who do not whish to see the light return!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Story" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Node2D/Back" to="." method="_on_Back_pressed"]
