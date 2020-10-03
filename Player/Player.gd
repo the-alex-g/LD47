@@ -27,6 +27,7 @@ func _on_Main_GO():
 	GO = true
 	primary_rotation = 0
 	secondary_rotation = 0
+	secondary_rotation_point.rotation_degrees.x = int(secondary_rotation_point.rotation_degrees.x)%360
 	$Spatial/MeshInstance/Camera.current = false
 	var _error = tween.interpolate_property(secondary_rotation_point, "rotation_degrees", Vector3(secondary_rotation_point.rotation_degrees.x,0,0), Vector3(-90,0,0), 1)
 	var _error2 = tween.start()
