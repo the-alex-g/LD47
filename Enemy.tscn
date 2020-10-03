@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Colors/Beige.png" type="Texture" id=2]
@@ -31,6 +31,86 @@ height = 0.2
 [sub_resource type="SpatialMaterial" id=7]
 albedo_texture = ExtResource( 2 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial/Enemy/Leg:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -8.62101, 26.664, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spatial/Enemy/Leg2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 8.99129, -41.3982, -2.49395 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spatial/Enemy/Leg3:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -12.966 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spatial/Enemy/Leg:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -16.1454, 27.5101, -3.93558 ), Vector3( -7.89967, 26.6115, 0.365608 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Spatial/Enemy/Leg2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 16.277, -39.4795, 6.24421 ), Vector3( 9.73818, -41.2581, -1.63317 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Spatial/Enemy/Leg3:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -3.14102 ), Vector3( 0, 0, -14.749 ) ]
+}
+
 [node name="Enemy" type="Spatial"]
 script = ExtResource( 1 )
 
@@ -44,17 +124,17 @@ transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.5, 0 )
 shape = SubResource( 1 )
 
 [node name="Leg" type="MeshInstance" parent="Spatial/Enemy"]
-transform = Transform( 0.893654, -0.0672677, 0.443687, 0, 0.988702, 0.149898, -0.448758, -0.133957, 0.883557, 0.190714, 0, 0.396887 )
+transform = Transform( 0.893514, -0.0672112, 0.443979, -0.0617216, 0.960967, 0.26969, -0.444775, -0.268375, 0.854488, 0.190714, -1.19209e-07, 0.396887 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="Leg2" type="MeshInstance" parent="Spatial/Enemy"]
-transform = Transform( 0.753919, -0.0706101, -0.653162, -0.0429792, 0.986777, -0.156285, 0.65556, 0.145898, 0.740915, 0.222341, 0.00416256, -0.331737 )
+transform = Transform( 0.754498, -0.194455, -0.626833, 0.0532366, 0.970085, -0.236859, 0.654139, 0.145339, 0.742279, 0.222341, 0.00416255, -0.331737 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
 [node name="Leg3" type="MeshInstance" parent="Spatial/Enemy"]
-transform = Transform( 0.974503, 0.224373, 0, -0.224373, 0.974503, 0, 0, 0, 1, -0.451147, 0, 0 )
+transform = Transform( 0.975767, 0.218809, 0, -0.218809, 0.975767, 0, 0, 0, 1, -0.451147, 0, 0 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
@@ -79,4 +159,8 @@ material/0 = SubResource( 7 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 8 )
+anims/Walk = SubResource( 9 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

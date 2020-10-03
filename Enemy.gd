@@ -3,6 +3,7 @@ extends Spatial
 
 var primary_rotation:float
 var secondary_rotation:float
+onready var scuttle:AnimationPlayer = $AnimationPlayer
 onready var secondary_rotation_point:Spatial = $Spatial
 
 func _ready():
@@ -20,3 +21,7 @@ func _process(_delta):
 func _on_Timer_timeout():
 	primary_rotation = (randi()%3)-1
 	secondary_rotation = (randi()%3)-1
+	if primary_rotation == 0 and secondary_rotation == 0:
+		scuttle.play("Idle")
+	else:
+		scuttle.play("Walk")
