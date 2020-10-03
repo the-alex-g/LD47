@@ -21,8 +21,9 @@ func _process(_delta):
 			primary_rotation -= 1
 		if Input.is_action_pressed("Right"):
 			primary_rotation += 1
-	secondary_rotation_point.rotation_degrees.x += secondary_rotation
-	rotation_degrees.y += primary_rotation
+	var dir := Vector2(primary_rotation, secondary_rotation).normalized()
+	secondary_rotation_point.rotation_degrees.x += dir.y
+	rotation_degrees.y += dir.x
 
 func _on_Main_GO():
 	GO = true
