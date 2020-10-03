@@ -21,4 +21,4 @@ func _on_Player_lighterup():
 func _on_Player_dead():
 	emit_signal("player_dead")
 	yield(get_tree().create_timer(2), "timeout")
-	get_tree().change_scene("res://Main/MainMenu.tscn")
+	var _error = get_tree().change_scene("res://Main/MainMenu.tscn")

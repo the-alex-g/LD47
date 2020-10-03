@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Music/Died.wav" type="AudioStream" id=2]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -28,4 +29,8 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+unit_db = 10.0
 [connection signal="area_entered" from="Spatial/MeshInstance/Player" to="." method="_on_Player_area_entered"]

@@ -12,7 +12,7 @@ func _ready():
 	primary_rotation = (randi()%3)-1
 	secondary_rotation = (randi()%3)-1
 
-func _process(delta):
+func _process(_delta):
 	var dir := Vector2(primary_rotation, secondary_rotation).normalized()
 	secondary_rotation_point.rotation_degrees.x += dir.y*0.5
 	rotation_degrees.y += dir.x*0.5

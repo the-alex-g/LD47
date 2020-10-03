@@ -3,6 +3,7 @@ extends Spatial
 
 onready var secondary_rotation_point:Spatial = $Spatial
 onready var tween:Tween = $Tween
+onready var dead:AudioStreamPlayer3D = $AudioStreamPlayer3D
 var GO := false
 var primary_rotation:float = 0
 var secondary_rotation:float = 0
@@ -45,3 +46,4 @@ func _on_Player_area_entered(area):
 		GO = true
 		stop()
 		emit_signal("dead")
+		dead.play()
