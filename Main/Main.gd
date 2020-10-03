@@ -17,7 +17,7 @@ func _on_Rod_lit():
 		camera.global_transform.origin = playercamera.global_transform.origin
 		var _error = tween.interpolate_property(camera, "translation", playercamera.global_transform.origin, Vector3(0,3,0), 2)
 		var _error2 = tween.start()
-		var _error3 = tween.interpolate_property(camera, "rotation_degrees", playercamera, Vector3(-90,0,0), 2)
+		var _error3 = tween.interpolate_property(camera, "rotation_degrees", playercamera.rotation_degrees, Vector3(-90,0,0), 2)
 		var _error4 = tween.start()
 	emit_signal("lit")
 
