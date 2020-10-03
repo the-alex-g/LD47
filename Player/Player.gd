@@ -4,7 +4,7 @@ extends Spatial
 onready var secondary_rotation_point:Spatial = $Spatial
 #onready var camera:Camera = $Spatial/Camera
 
-func _physics_process(delta):
+func _process(_delta):
 	var primary_rotation:float
 	var secondary_rotation:float
 	if Input.is_action_pressed("Left"):

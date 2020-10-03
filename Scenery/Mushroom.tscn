@@ -45,3 +45,6 @@ material/0 = null
 [node name="Frill" type="MeshInstance" parent="Spatial/Mushroom"]
 mesh = SubResource( 4 )
 material/0 = null
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+[connection signal="camera_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_exited"]
