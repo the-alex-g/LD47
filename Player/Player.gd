@@ -7,6 +7,7 @@ var GO := false
 var primary_rotation:float = 0
 var secondary_rotation:float = 0
 signal lighterup
+signal dead
 
 func _process(_delta):
 	if not GO:
@@ -36,3 +37,9 @@ func _on_Main_GO():
 	var _error4 = tween.start()
 	yield(get_tree().create_timer(3), "timeout")
 	emit_signal("lighterup")
+
+
+func _on_Player_area_entered(area):
+	if area.name == "Enemy" and not GO:
+		GO = true
+		emit_signal("dead")

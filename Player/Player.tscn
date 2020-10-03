@@ -28,3 +28,4 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+[connection signal="area_entered" from="Spatial/MeshInstance/Player" to="." method="_on_Player_area_entered"]

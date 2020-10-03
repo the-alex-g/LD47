@@ -20,7 +20,3 @@ func _process(delta):
 func _on_Timer_timeout():
 	primary_rotation = (randi()%3)-1
 	secondary_rotation = (randi()%3)-1
-
-func _on_Enemy_area_entered(area):
-	if area.name == "Player":
-		print("YUMMY PLAYERS")
