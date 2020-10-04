@@ -43,30 +43,30 @@ func _process(_delta):
 
 func _input(event):
 	if start:
-		var thingie:InputEventMouseButton = event as InputEventMouseButton
+		var thingie:InputEventScreenTouch = event as InputEventScreenTouch
 		if thingie && event.is_pressed():
-			if event.position.x < 540 and event.position.x > 460 and event.position.y < 280:
+			if event.position.x < 550 and event.position.x > 450 and event.position.y < 320:
 				Input.action_press("Forward")
-			elif event.position.x < 540 and event.position.x > 460 and event.position.y > 360:
+			elif event.position.x < 550 and event.position.x > 450 and event.position.y > 320:
 				Input.action_press("backward")
-			if event.position.y < 360 and event.position.y > 280 and event.position.x < 460:
+			if event.position.y < 370 and event.position.y > 270 and event.position.x < 500:
 				Input.action_press("Left")
-			elif event.position.y < 360 and event.position.y > 280 and event.position.x > 540:
+			elif event.position.y < 370 and event.position.y > 270 and event.position.x > 500:
 				Input.action_press("Right")
 		if thingie && not event.is_pressed():
-			if event.position.x < 540 and event.position.x > 460 and event.position.y < 280:
+			if event.position.x < 550 and event.position.x > 450 and event.position.y < 320:
 				Input.action_release("Forward")
-			elif event.position.x < 540 and event.position.x > 460 and event.position.y > 360:
+			elif event.position.x < 550 and event.position.x > 450 and event.position.y > 320:
 				Input.action_release("backward")
-			if event.position.y < 360 and event.position.y > 280 and event.position.x < 460:
+			if event.position.y < 370 and event.position.y > 270 and event.position.x < 500:
 				Input.action_release("Left")
-			elif event.position.y < 360 and event.position.y > 280 and event.position.x > 540:
+			elif event.position.y < 370 and event.position.y > 270 and event.position.x > 500:
 				Input.action_release("Right")
 
 func _on_Main_won():
 	start = false
 	stop()
-	secondary_rotation_point.rotation_degrees.x = int(secondary_rotation_point.rotation_degrees.x)%360
+	secondary_rotation_point.rotation_degrees.x = int(secondary_rotation_point.rotation_degrees.x)%370
 	var _error = tween.interpolate_property(secondary_rotation_point, "rotation_degrees", Vector3(secondary_rotation_point.rotation_degrees.x,0,0), Vector3(-90,0,0), 1)
 	var _error2 = tween.start()
 	yield(get_tree().create_timer(1), "timeout")
