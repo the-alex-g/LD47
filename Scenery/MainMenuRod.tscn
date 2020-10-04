@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenery/Scenery.gd" type="Script" id=1]
+[ext_resource path="res://Scenery/MainMenuRod.gd" type="Script" id=1]
 [ext_resource path="res://Colors/Spiral.png" type="Texture" id=2]
 
 [sub_resource type="CylinderMesh" id=1]
@@ -35,3 +35,5 @@ light_color = Color( 0.768627, 0.584314, 0.952941, 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.250236, 0 )
 mesh = SubResource( 3 )
 material/0 = null
+
+[node name="Tween" type="Tween" parent="."]

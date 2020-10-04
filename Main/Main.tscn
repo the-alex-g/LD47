@@ -62,8 +62,8 @@ environment = SubResource( 2 )
 [node name="Rod3" parent="MainMenuRods" instance=ExtResource( 4 )]
 
 [node name="OmniLight" type="OmniLight" parent="."]
-visible = false
 light_color = Color( 0.921569, 0.713726, 0.913725, 1 )
+light_energy = 0.0
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.614299, -1.68595e-08, 0.789073, -0.789073, -3.44915e-08, 0.614299, 1.68595e-08, -1, -3.44915e-08, 3.53031, 2.272, 0 )
@@ -94,8 +94,8 @@ visible = false
 [connection signal="lit_rod" from="." to="HUD" method="_on_MainMenu_lit_rod"]
 [connection signal="lose" from="." to="HUD" method="_on_MainMenu_lose"]
 [connection signal="start" from="." to="HUD" method="_on_MainMenu_start"]
-[connection signal="won" from="." to="HUD" method="_on_MainMenu_won"]
 [connection signal="won" from="." to="Player" method="_on_Main_won"]
+[connection signal="won" from="." to="HUD" method="_on_MainMenu_won"]
 [connection signal="play" from="HUD" to="." method="_on_HUD_play"]
 [connection signal="return_to_main" from="HUD" to="." method="_on_HUD_return_to_main"]
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]

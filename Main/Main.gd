@@ -17,7 +17,8 @@ func _ready():
 	load_main()
 
 func load_main():
-	worldlight.visible = false
+	var _error = tween.interpolate_property(worldlight, "light_energy", null,0,0.5)
+	var _error2 = tween.start()
 	player.start = false
 	player.reset()
 	rods.hide()
@@ -27,6 +28,7 @@ func load_main():
 	for rod in mainmenurods.get_children():
 		rod.show()
 		rod.set_new_location()
+		rod.fadein()
 	lit_rods = 0
 
 func _on_HUD_play():
@@ -35,6 +37,9 @@ func _on_HUD_play():
 	var _error3 = tween.interpolate_property(camera, "rotation_degrees", Vector3(-37.9, 90, -90), Vector3(0,180,0), 2)
 	var _error4 = tween.start()
 	yield(get_tree().create_timer(2), "timeout")
+	for rod in mainmenurods.get_children():
+		rod.fadeout()
+	yield(get_tree().create_timer(1), "timeout")
 	for rod in mainmenurods.get_children():
 		rod.hide()
 	player.start = true
@@ -56,7 +61,8 @@ func _on_Rod_lit():
 		var _error4 = tween.start()
 
 func _on_Player_lighterup():
-	worldlight.visible = true
+	var _error = tween.interpolate_property(worldlight, "light_energy", 0,1,0.5)
+	var _error2 = tween.start()
 
 func _on_HUD_return_to_main():
 	playercamera.current = false
