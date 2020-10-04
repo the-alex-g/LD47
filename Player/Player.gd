@@ -48,7 +48,7 @@ func _input(event):
 			if event.position.x < 550 and event.position.x > 450 and event.position.y < 320:
 				Input.action_press("Forward")
 			elif event.position.x < 550 and event.position.x > 450 and event.position.y > 320:
-				Input.action_press("backward")
+				Input.action_press("Backward")
 			if event.position.y < 370 and event.position.y > 270 and event.position.x < 500:
 				Input.action_press("Left")
 			elif event.position.y < 370 and event.position.y > 270 and event.position.x > 500:
@@ -57,7 +57,7 @@ func _input(event):
 			if event.position.x < 550 and event.position.x > 450 and event.position.y < 320:
 				Input.action_release("Forward")
 			elif event.position.x < 550 and event.position.x > 450 and event.position.y > 320:
-				Input.action_release("backward")
+				Input.action_release("Backward")
 			if event.position.y < 370 and event.position.y > 270 and event.position.x < 500:
 				Input.action_release("Left")
 			elif event.position.y < 370 and event.position.y > 270 and event.position.x > 500:
