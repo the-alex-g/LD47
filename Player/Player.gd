@@ -41,6 +41,28 @@ func _process(_delta):
 	secondary_rotation_point.rotation_degrees.x += dir.y
 	rotation_degrees.y += dir.x
 
+func _input(event):
+	if start:
+		var thingie:InputEventMouseButton = event as InputEventMouseButton
+		if thingie && event.is_pressed():
+			if event.position.x < 540 and event.position.x > 460 and event.position.y < 280:
+				Input.action_press("Forward")
+			elif event.position.x < 540 and event.position.x > 460 and event.position.y > 360:
+				Input.action_press("backward")
+			if event.position.y < 360 and event.position.y > 280 and event.position.x < 460:
+				Input.action_press("Left")
+			elif event.position.y < 360 and event.position.y > 280 and event.position.x > 540:
+				Input.action_press("Right")
+		if thingie && not event.is_pressed():
+			if event.position.x < 540 and event.position.x > 460 and event.position.y < 280:
+				Input.action_release("Forward")
+			elif event.position.x < 540 and event.position.x > 460 and event.position.y > 360:
+				Input.action_release("backward")
+			if event.position.y < 360 and event.position.y > 280 and event.position.x < 460:
+				Input.action_release("Left")
+			elif event.position.y < 360 and event.position.y > 280 and event.position.x > 540:
+				Input.action_release("Right")
+
 func _on_Main_won():
 	start = false
 	stop()
