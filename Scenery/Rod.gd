@@ -6,7 +6,7 @@ onready var noise:AudioStreamPlayer3D = $AudioStreamPlayer3D
 signal lit
 
 func _on_VisibilityNotifier_camera_entered(_camera):
-	_set_new_location()
+	set_new_location()
 
 
 func _on_Area_area_entered(area):

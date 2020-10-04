@@ -1,22 +1,68 @@
 extends CanvasLayer
 
-onready var tracker:AnimatedSprite = $AnimatedSprite
-onready var _message:Label = $Label
-var rods_lit := 0
+onready var main_menu:Control = $MainMenu
+onready var gameplay:Control = $GamePlay
+onready var back:Button = $MainMenu/Node2D/Back
+onready var play:Button = $MainMenu/VBoxContainer/Play
+onready var story:Button = $MainMenu/VBoxContainer/Story
+onready var fluff:Node2D = $MainMenu/Node2D
+onready var main:VBoxContainer = $MainMenu/VBoxContainer
+onready var pressed:AudioStreamPlayer = $AudioStreamPlayer
+onready var message:Label = $GamePlay/Label
+signal play
+signal return_to_main
 
-func _on_Main_lit():
-	rods_lit += 1
+func _ready():
+	load_main()
 
-func _process(_delta):
-	tracker.play(str(rods_lit))
+func load_main():
+	gameplay.hide()
+	main_menu.show()
+	toggle_story(false)
+	message.hide()
 
-func _on_Main_player_dead():
-	_message.text = "You have failed to light the darkness"
-	_message.visible = true
+func toggle_story(b:bool):
+	enable_story(b)
+	fluff.visible = b
+	main.visible = !b
 
-func _on_Main_won():
-	_message.text = "You have illuminated the inky void"
-	_message.visible = true
+func enable_story(b:bool):
+	back.disabled = !b
+	play.disabled = b
+	story.disabled = b
+
+func _on_Story_pressed():
+	pressed.play()
+	toggle_story(true)
+
+func _on_Back_pressed():
+	pressed.play()
+	toggle_story(false)
+
+func _on_Play_pressed():
+	main_menu.hide()
+	enable_story(true)
+	back.disabled = true
+	emit_signal("play")
+
+func _on_MainMenu_start():
+	gameplay.show()
+
+func _on_MainMenu_won():
+	yield(get_tree().create_timer(4), "timeout")
+	message.text = "You have illuminated the inky darkness"
+	message.show()
 	yield(get_tree().create_timer(2), "timeout")
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	var _error = get_tree().change_scene("res://Main/MainMenu.tscn")
+	emit_signal("return_to_main")
+	gameplay.hide()
+	yield(get_tree().create_timer(2), "timeout")
+	load_main()
+
+func _on_MainMenu_lose():
+	message.text = "You have failed to light the darkness"
+	message.show()
+	yield(get_tree().create_timer(2), "timeout")
+	emit_signal("return_to_main")
+	gameplay.hide()
+	yield(get_tree().create_timer(2), "timeout")
+	load_main()
