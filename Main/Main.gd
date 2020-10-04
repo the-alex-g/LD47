@@ -34,7 +34,7 @@ func load_main():
 func _on_HUD_play():
 	var _error = tween.interpolate_property(camera, "translation", Vector3(3.53, 2.272, 0), Vector3(0,0,1), 2)
 	var _error2 = tween.start()
-	var _error3 = tween.interpolate_property(camera, "rotation_degrees", Vector3(-37.9, 90, -90), Vector3(0,180,0), 2)
+	var _error3 = tween.interpolate_property(camera, "rotation_degrees", Vector3(-37.9, 90, -90), Vector3(0,180,-180), 2)
 	var _error4 = tween.start()
 	yield(get_tree().create_timer(2), "timeout")
 	for rod in mainmenurods.get_children():
