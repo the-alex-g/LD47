@@ -27,6 +27,7 @@ func load_main():
 	for rod in mainmenurods.get_children():
 		rod.show()
 		rod.set_new_location()
+	lit_rods = 0
 
 func _on_HUD_play():
 	var _error = tween.interpolate_property(camera, "translation", Vector3(3.53, 2.272, 0), Vector3(0,0,1), 2)

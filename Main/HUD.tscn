@@ -246,6 +246,8 @@ __meta__ = {
 position = Vector2( 512, 300 )
 frames = SubResource( 10 )
 animation = "3"
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Story" to="." method="_on_Story_pressed"]
 [connection signal="pressed" from="MainMenu/Node2D/Back" to="." method="_on_Back_pressed"]

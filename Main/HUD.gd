@@ -10,6 +10,7 @@ onready var main:VBoxContainer = $MainMenu/VBoxContainer
 onready var pressed:AudioStreamPlayer = $AudioStreamPlayer
 onready var message:Label = $GamePlay/Label
 onready var _icon:AnimatedSprite = $GamePlay/AnimatedSprite
+onready var tween:Tween = $Tween
 var lit_rods := 0
 signal play
 signal return_to_main
@@ -22,6 +23,8 @@ func _process(_delta):
 
 func load_main():
 	gameplay.hide()
+	var _error = tween.interpolate_property(main_menu, "modulate", Color(1,1,1,0), Color(1,1,1,1), 1)
+	var _error2 = tween.start()
 	main_menu.show()
 	toggle_story(false)
 	message.hide()
@@ -47,13 +50,18 @@ func _on_Back_pressed():
 
 func _on_Play_pressed():
 	pressed.play()
-	main_menu.hide()
+	var _error = tween.interpolate_property(main_menu, "modulate", Color(1,1,1,1), Color(1,1,1,0), 1)
+	var _error2 = tween.start()
 	enable_story(true)
 	back.disabled = true
 	emit_signal("play")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	yield(get_tree().create_timer(1), "timeout")
+	main_menu.hide()
 
 func _on_MainMenu_start():
+	var _error = tween.interpolate_property(gameplay, "modulate", Color(1,1,1,0), Color(1,1,1,1), 1)
+	var _error2 = tween.start()
 	gameplay.show()
 
 func _on_MainMenu_won():
@@ -62,7 +70,8 @@ func _on_MainMenu_won():
 	message.show()
 	yield(get_tree().create_timer(2), "timeout")
 	emit_signal("return_to_main")
-	gameplay.hide()
+	var _error = tween.interpolate_property(gameplay, "modulate", Color(1,1,1,1), Color(1,1,1,0), 1)
+	var _error2 = tween.start()
 	yield(get_tree().create_timer(2), "timeout")
 	load_main()
 
@@ -71,7 +80,8 @@ func _on_MainMenu_lose():
 	message.show()
 	yield(get_tree().create_timer(2), "timeout")
 	emit_signal("return_to_main")
-	gameplay.hide()
+	var _error = tween.interpolate_property(gameplay, "modulate", Color(1,1,1,1), Color(1,1,1,0), 1)
+	var _error2 = tween.start()
 	yield(get_tree().create_timer(2), "timeout")
 	load_main()
 
