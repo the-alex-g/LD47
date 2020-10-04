@@ -67,7 +67,7 @@ func _on_MainMenu_start():
 
 func _on_MainMenu_won():
 	yield(get_tree().create_timer(4), "timeout")
-	message.text = "You have illuminated the inky darkness"
+	message.text = "You have illuminated the inky void"
 	message.show()
 	yield(get_tree().create_timer(2), "timeout")
 	emit_signal("return_to_main")
