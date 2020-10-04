@@ -29,6 +29,7 @@ func load_main():
 	toggle_story(false)
 	message.hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	lit_rods = 0
 
 func toggle_story(b:bool):
 	enable_story(b)
