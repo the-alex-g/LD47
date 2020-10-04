@@ -46,6 +46,7 @@ func _on_Back_pressed():
 	toggle_story(false)
 
 func _on_Play_pressed():
+	pressed.play()
 	main_menu.hide()
 	enable_story(true)
 	back.disabled = true
