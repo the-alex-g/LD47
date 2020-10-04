@@ -25,6 +25,10 @@ func reset():
 	secondary_rotation_point.rotation_degrees = BLARG
 	secondary_rotation_point.translation = arg
 	$Spatial/MeshInstance.translation.y = 0.5
+	Input.action_release("Backward")
+	Input.action_release("Forward")
+	Input.action_release("Right")
+	Input.action_release("Left")
 
 func _process(_delta):
 	if start:
