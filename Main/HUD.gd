@@ -9,17 +9,23 @@ onready var fluff:Node2D = $MainMenu/Node2D
 onready var main:VBoxContainer = $MainMenu/VBoxContainer
 onready var pressed:AudioStreamPlayer = $AudioStreamPlayer
 onready var message:Label = $GamePlay/Label
+onready var _icon:AnimatedSprite = $GamePlay/AnimatedSprite
+var lit_rods := 0
 signal play
 signal return_to_main
 
 func _ready():
 	load_main()
 
+func _process(_delta):
+	_icon.play(str(lit_rods))
+
 func load_main():
 	gameplay.hide()
 	main_menu.show()
 	toggle_story(false)
 	message.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func toggle_story(b:bool):
 	enable_story(b)
@@ -44,6 +50,7 @@ func _on_Play_pressed():
 	enable_story(true)
 	back.disabled = true
 	emit_signal("play")
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _on_MainMenu_start():
 	gameplay.show()
@@ -66,3 +73,6 @@ func _on_MainMenu_lose():
 	gameplay.hide()
 	yield(get_tree().create_timer(2), "timeout")
 	load_main()
+
+func _on_MainMenu_lit_rod():
+	lit_rods += 1

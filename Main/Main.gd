@@ -1,6 +1,7 @@
 extends CSGTorus
 
 signal start
+signal lit_rod
 signal won
 signal lose
 onready var tween:Tween = $Tween
@@ -43,6 +44,7 @@ func _on_HUD_play():
 
 func _on_Rod_lit():
 	lit_rods += 1
+	emit_signal("lit_rod")
 	if lit_rods == 3:
 		playercamera.current = false
 		camera.current = true

@@ -91,6 +91,7 @@ visible = false
 [node name="Rod2" parent="Rods" instance=ExtResource( 9 )]
 
 [node name="Rod3" parent="Rods" instance=ExtResource( 9 )]
+[connection signal="lit_rod" from="." to="HUD" method="_on_MainMenu_lit_rod"]
 [connection signal="lose" from="." to="HUD" method="_on_MainMenu_lose"]
 [connection signal="start" from="." to="HUD" method="_on_MainMenu_start"]
 [connection signal="won" from="." to="Player" method="_on_Main_won"]
